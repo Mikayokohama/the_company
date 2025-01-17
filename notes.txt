@@ -1,0 +1,4 @@
+actions -- what the actions of the program will do
+assets -- css and images
+classes -- the logic of the app (brain of the application)
+views -- html files
