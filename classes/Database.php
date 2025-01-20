@@ -4,7 +4,7 @@
         private $server_name = "localhost"; //our computer
         private $username = "root";
         private $password = ""; // Add "root" for MAC users
-        private $db_name = "the_company_jan";
+        private $db_name = "the_company_jan"; //this is a test
         protected $conn;
 
         public function __construct(){

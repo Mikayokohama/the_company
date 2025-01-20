@@ -35,22 +35,23 @@
             $password = $request['password'];
 
             # query string
-            $sql = "SELECT * FROM users WHERE username = '$username'";
+            $sql = "SELECT * FROM users WHERE username = '$username'";  //　*はeverythingの意味
             $result = $this->conn->query($sql);
             # $result = ['id' => 1, 'username' => 'mary', 'password' =>$42y@#109*&*^...]
 
             # check for the username if it exists
-            if ($result->num_rows == 1) {
+            if ($result->num_rows == 1) {  //もしも０であれば not exsistという事
                 #check if the password is correct
-                $user = $result->fetch_assoc();
+                $user = $result->fetch_assoc();  //取得した行に対応する連想配列を返す関数...fetch_assoc
                 //$user = ['id' => 1, 'username' => 'mary', 'password' =>$42y@#109*&*^...]
 
                 if (password_verify($password, $user['password'])) {
-                    #create session variables for future use
+                    #create session variables(セッション変数) for future use
+                    //セッション変数・・・SQLを介してアクセスする名前付きメモリー変数の事
                     session_start();
                     $_SESSION['id']             = $user['id'];
                     $_SESSION['username']       = $user['username'];
-                    $_SESSION['full_name']      = $user['first_name'] . " " . $user['last_name'];
+                    $_SESSION['full_name']      = $user['first_name'] . " " . $user['last_name']; //(firstname + lastname)
 
                     header('location: ../views/dashboard.php'); //dashboard
                     exit;

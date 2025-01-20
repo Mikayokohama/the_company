@@ -7,3 +7,5 @@
 
     # Call the login method
     $user->login($_POST);
+
+    
